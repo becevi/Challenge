@@ -1,0 +1,52 @@
+
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(250, 140, 125, 0.14);">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><%= image_tag("logo.svg", height: 30)%></a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <form class="d-flex">
+            <input class="form-control ms-auto" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+
+            <div class="btn-group ms-auto">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= image_tag("user.png", height: 30)%>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><button class="dropdown-item" type="button">Buyer sign in</button></li>
+                <li><button class="dropdown-item" type="button">Seller sign in</button></li>
+                <li><button class="dropdown-item" type="button">Signup</button></li>
+            </ul>
+            </div>
+
+        </div>
+    </div>
+    </nav>
+<br>
+    <div class="container-fluid">      
+        <div class="row gy-4">
+            <% @books.each do |b| %>
+                <div class="col-lg-3">
+                    <div class="card text-center" style="width: 18rem; border-color: white;">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= b.title %></h5>
+                        <h5 class="card-title"><%= b.first_name%> <%= b.last_name%></h5>
+                        <p class="card-text"><%= b.description %></p>
+                        <p>Stock: <%= b.stock %></p>
+                        <p style="color: rgba(250, 140, 125, 1);">$<%=b.price %>      <a href="#" class="btn btn-primary" style="background-color: rgba(250, 140, 125, 1); border-color: white;">Buy now</a></p>
+                    </div>
+                    </div>  
+                </div>
+            <% end %>
+        </div>
+    </div>
+    
+
+
+
