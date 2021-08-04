@@ -7,7 +7,7 @@ class CreateBooks < ActiveRecord::Migration[6.1]
       t.text :description
       t.decimal :price
       t.integer :stock
-
+      t.references :admin
       t.timestamps
     end
   end

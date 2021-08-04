@@ -19,9 +19,17 @@
                 <%= image_tag("user.png", height: 30)%>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-                <li><button class="dropdown-item" type="button">Buyer sign in</button></li>
-                <li><button class="dropdown-item" type="button">Seller sign in</button></li>
-                <li><button class="dropdown-item" type="button">Signup</button></li>
+            <%if user_signed_in? %>
+                <li><button class="dropdown-item" type="button"><%= link_to "Sign out",destroy_user_session_path, method: :delete, class:"nav-link" %></button></li>
+            <% elsif admin_signed_in?%>
+                <li><button class="dropdown-item" type="button"><%= link_to "Sign out",destroy_admin_session_path, method: :delete, class:"nav-link" %></button></li>
+            <% else %>    
+                <li><button class="dropdown-item" type="button"><%= link_to "Buyer sign in",new_user_session_path, class:"nav-link" %></button></li>
+                <li><button class="dropdown-item" type="button"><%= link_to "Buyer Signup",new_user_registration_path, class:"nav-link" %></button></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><button class="dropdown-item" type="button"><%= link_to "Seller sign in",new_admin_session_path, class:"nav-link" %></button></li>
+                <li><button class="dropdown-item" type="button"><%= link_to "Seller Signup",new_admin_registration_path, class:"nav-link" %></button></li>
+            <% end %>
             </ul>
             </div>
 
@@ -29,6 +37,8 @@
     </div>
     </nav>
 <br>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
     <div class="container-fluid">      
         <div class="row gy-4">
             <% @books.each do |b| %>
