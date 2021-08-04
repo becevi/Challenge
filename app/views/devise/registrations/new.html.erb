@@ -2,8 +2,24 @@
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
-
+  
   <div class="form-inputs">
+    <%= f.input :first_name,
+                required: true,
+                autofocus: true%>
+    <%= f.input :last_name,
+                required: true,
+                autofocus: true%>
+    <% if user_session %>
+      <%= f.input :address,
+                  required: true,
+                  autofocus: true%>
+    <% elsif admin_session %>
+      <%= f.input :phone,
+                  required: true,
+                  autofocus: true%>
+    <% end %>  
+    <%= request.path %>          
     <%= f.input :email,
                 required: true,
                 autofocus: true,
