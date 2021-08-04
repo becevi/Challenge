@@ -1,4 +1,4 @@
-// inside app/frontend/js/bootstrap_js_files.js  
+import 'bootstrap';
 
 // import 'bootstrap/js/src/alert'  
 // import 'bootstrap/js/src/button'  
