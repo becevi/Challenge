@@ -10,12 +10,8 @@
     <%= f.input :last_name,
                 required: true,
                 autofocus: true%>
-    <% if user_session %>
+    <% if request.path.include?("user") %>
       <%= f.input :address,
-                  required: true,
-                  autofocus: true%>
-    <% elsif admin_session %>
-      <%= f.input :phone,
                   required: true,
                   autofocus: true%>
     <% end %>  
