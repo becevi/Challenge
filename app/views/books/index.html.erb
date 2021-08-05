@@ -1,0 +1,20 @@
+<%# CARD %>
+<div class="container-fluid">      
+    <div class="row gy-4">
+        <% @books.each do |b| %>
+            <div class="col-lg-3">
+                <div class="card text-center" style="width: 18rem; border-color: white;">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= b.title %></h5>
+                        <h5 class="card-title"><%= b.first_name%> <%= b.last_name%></h5>
+                        <p class="card-text"><%= b.description %></p>
+                        <p>Stock: <%= b.stock %></p>
+                        <p style="color: rgba(250, 140, 125, 1);">$<%=b.price %></p>
+                        
+                    </div>
+                </div>  
+            </div>
+        <% end %>
+    </div>
+</div>
+    

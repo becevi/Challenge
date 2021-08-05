@@ -6,11 +6,74 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  <%# NAVBAR with logo, search bar, search button, and toggle down button for user %>
+<%# It collapses on smaller screens %>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(250, 140, 125, 0.14);">
+    <div class="container-fluid">
+        <%# LOGO %>
+        <a class="navbar-brand" href="#"><%= image_tag("logo.svg", height: 30)%></a>
+        
+        <%# TOGGLER ICON FOR NAVBAR %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <%# COLLAPSE NAVBAR %>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="d-flex">
+                <%# SEARCHBAR %>
+                <%= form_tag books_path, method: :get do %>
+                    <%= text_field_tag :query,
+                        params[:query],
+                        class: "form-control",
+                        placeholder: "Find a book"%>
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                <% end %>
+            </form>
+
+            <%# TOGGLER USER ICON %>
+            <div class="btn-group ms-auto">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <%= image_tag("user.png", height: 30)%>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <%if user_signed_in? %>
+                        <li><button class="dropdown-item" type="button"><%= link_to "Sign out",destroy_user_session_path, method: :delete, class:"nav-link" %></button></li>
+                    <% elsif admin_signed_in?%>
+                        <li><button class="dropdown-item" type="button"><%= link_to "Sign out",destroy_admin_session_path, method: :delete, class:"nav-link" %></button></li>
+                    <% else %>    
+                        <li><button class="dropdown-item" type="button"><%= link_to "Buyer sign in",new_user_session_path, class:"nav-link" %></button></li>
+                        <li><button class="dropdown-item" type="button"><%= link_to "Buyer Signup",new_user_registration_path, class:"nav-link" %></button></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><button class="dropdown-item" type="button"><%= link_to "Seller sign in",new_admin_session_path, class:"nav-link" %></button></li>
+                        <li><button class="dropdown-item" type="button"><%= link_to "Seller Signup",new_admin_registration_path, class:"nav-link" %></button></li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<br>
+
+
+  
+    
+   
+  
+
+
+
+<%# ALERTS %>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
     <%= yield %>
   </body>
 </html>
