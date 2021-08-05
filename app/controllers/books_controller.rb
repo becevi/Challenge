@@ -18,16 +18,18 @@ class BooksController < ApplicationController
     # creates a new instance of book and if saved goes back to admin dashboard
     # else it asks goes back to the form
     def create 
-        @book = Book.new(book_params) 
-        if @book.save 
-            redirect_to(admins_authenticated_root_path) and return
-        else               
-            render '/books/new' 
-        end 
+      @book = Book.new(book_params) 
+      if @book.save 
+          redirect_to(admins_authenticated_root_path)
+      else               
+          render '/books/new' 
+      end 
+  
     end 
     
     # params to retrieve safely the book params
     private 
+    
     def book_params 
       params.require(:book).permit(:title, :first_name, :last_name, :description, :price, :stock) 
     end 
