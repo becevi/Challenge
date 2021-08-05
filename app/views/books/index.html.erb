@@ -19,7 +19,7 @@
                     <%= text_field_tag :query,
                         params[:query],
                         class: "form-control",
-                        placeholder: "Find a movie"%>
+                        placeholder: "Find a book"%>
                         <button class="btn btn-outline-success" type="submit">Search</button>
                 <% end %>
             </form>
@@ -49,6 +49,14 @@
 
 <br>
 
+
+  
+    
+   
+  
+
+
+
 <%# ALERTS %>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
@@ -64,7 +72,8 @@
                         <h5 class="card-title"><%= b.first_name%> <%= b.last_name%></h5>
                         <p class="card-text"><%= b.description %></p>
                         <p>Stock: <%= b.stock %></p>
-                        <p style="color: rgba(250, 140, 125, 1);">$<%=b.price %>      <a href="#" class="btn btn-primary" style="background-color: rgba(250, 140, 125, 1); border-color: white;">Buy now</a></p>
+                        <p style="color: rgba(250, 140, 125, 1);">$<%=b.price %></p>
+                        
                     </div>
                 </div>  
             </div>
@@ -75,3 +84,4 @@
 
 
 
+<% # <p><%= link_to "Add to Cart", add_to_cart_path(b), method: :put, class:"btn btn-primary" %></p>%>

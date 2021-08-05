@@ -1,5 +1,6 @@
 class Book < ApplicationRecord
-    has_and_belongs_to_many :sellers
+    belongs_to :admin
     has_many :orders
-    has_many :items
+    has_many :users, through: :orders
+    
 end
