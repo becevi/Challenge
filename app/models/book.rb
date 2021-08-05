@@ -1,5 +1,7 @@
 class Book < ApplicationRecord
-    has_and_belongs_to_many :sellers
+    belongs_to :admin
+    has_many :manifests
+    has_many :carts
     has_many :orders
-    has_many :items
+
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   devise_for :admins, path: 'admins', controllers: {
     sessions: 'admins/sessions',
     registrations: 'admins/registrations'
@@ -26,8 +27,11 @@ Rails.application.routes.draw do
   end
 
 
-  root to: 'books#index'
+  root to: 'books#index', as: :root
   resources :books
+
+  resources :carts
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 end
